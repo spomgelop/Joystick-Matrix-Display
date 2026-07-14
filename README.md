@@ -14,6 +14,7 @@ A simple Arduino project that reads the input from an analog joystick and displa
 - Breadboard and jumper wires
 
 **Demo Simulation**
+
 <img width="752" height="685" alt="image" src="https://github.com/user-attachments/assets/90baac53-21f1-4288-956f-2abccbf18de2" />
 
 **Libraries Required**
