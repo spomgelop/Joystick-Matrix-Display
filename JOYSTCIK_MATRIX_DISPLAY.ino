@@ -1,0 +1,114 @@
+#include <LedControl.h>
+
+
+const int matrixDin = 11;
+const int matrixCs = 10;
+const int matrixClk = 13;
+const int joystickV = A0;
+const int joystickH = A1;
+const int joystickSW = 2;
+
+
+LedControl lc = LedControl(matrixDin, matrixClk, matrixCs, 1);
+
+
+byte leftArrow[8] = {
+  0b00010000,
+  0b00110000,
+  0b01110000,
+  0b11111111,
+  0b11111111,
+  0b01110000,
+  0b00110000,
+  0b00010000
+  };
+
+
+byte rightArrow[8] = {
+  0b00001000,
+  0b00001100,
+  0b00001110,
+  0b11111111,
+  0b11111111,
+  0b00001110,
+  0b00001100,
+  0b00001000
+  };
+
+
+ byte upArrow[8] = {
+  0b00011000,
+  0b00011000,
+  0b00011000,
+  0b00011000,
+  0b11111111,
+  0b01111110,
+  0b00111100,
+  0b00011000
+ };
+
+
+byte downArrow[8] = {
+  0b00011000,
+  0b00111100,
+  0b01111110,
+  0b11111111,
+  0b00011000,
+  0b00011000,
+  0b00011000,
+  0b00011000
+  };
+ 
+byte noArrow [8] = {
+  0b00000000,
+  0b00000000,
+  0b00000000,
+  0b00000000,
+  0b00000000,
+  0b00000000,
+  0b00000000,
+  0b00000000
+  };
+
+
+  void displayPattern(byte pattern[]) {
+    for (int row = 0; row < 8; row++) {
+    lc.setRow(0, row, pattern[row]);
+  }
+}
+
+
+void setup() {
+  lc.shutdown(0, false);  // wake up the display
+  lc.setIntensity(0, 8);  // brightness 0-15
+  lc.clearDisplay(0);     // clear screen
+  Serial.begin(9600);
+}
+
+
+void loop() {
+  int xValue = analogRead(joystickH);
+  int yValue = analogRead(joystickV);
+
+
+  if (xValue < 300) {
+    //display left arrow
+    displayPattern(leftArrow);
+  }
+  else if (xValue > 700) {
+    //display right arrow
+    displayPattern(rightArrow);
+  }
+  else if (yValue < 300) {
+    //display up arrow
+    displayPattern(upArrow);
+  }
+  else if (yValue > 700) {
+    //display down arrow
+    displayPattern(downArrow);
+  }
+  else {
+    //display nothing
+    displayPattern(noArrow);
+  }
+}
