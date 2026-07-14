@@ -17,6 +17,7 @@ A simple Arduino project that reads the input from an analog joystick and displa
 
 <img width="752" height="685" alt="image" src="https://github.com/user-attachments/assets/90baac53-21f1-4288-956f-2abccbf18de2" />
 
+
 **Libraries Required**
 - [LedControl](https://wayoda.github.io/LedControl/) - Install via Arduino IDE Library Manager
 
