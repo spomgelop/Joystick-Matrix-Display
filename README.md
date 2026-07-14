@@ -32,3 +32,6 @@ A simple Arduino project that reads the input from an analog joystick and displa
 - Utilise the joystick's push-button (SW pin) for additional functionality
 - Support diagonal directions
 - Adjustable sensitivity/threshold values
+
+
+Video Demonstration on YouTube - https://www.youtube.com/shorts/NAUJupJvw-U
